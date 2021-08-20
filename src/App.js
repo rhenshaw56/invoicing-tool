@@ -1,11 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  font-size: 40px;
+  background: linear-gradient(20deg, rgb(219, 112, 147), #daa357);
+`;
 
 function App() {
   return (
-    <div className="App">
+    <Container>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src="" className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -18,7 +29,7 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+    </Container>
   );
 }
 
