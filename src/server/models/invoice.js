@@ -1,7 +1,8 @@
+import knex from 'knex';
 import { Model } from 'objection';
-import knex from '../config/knexfile';
+import knexfile from '../../../knexfile';
 
-Model.knex(knex);
+Model.knex(knex(knexfile));
 
 export default class Invoice extends Model {
 
@@ -12,12 +13,13 @@ export default class Invoice extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['firstName', 'lastName'],
+      required: ['customer', 'products'],
 
       properties: {
         id: { type: 'integer' },
         customer: {
           type: 'object',
+          required: ['fullname', 'email'],
           properties: {
             fullname: { type: 'string' },
             address: { type: 'string' },
@@ -28,11 +30,12 @@ export default class Invoice extends Model {
             }
           }
         },
-        product_details: {
+        products: {
           type: 'array',
           minItems: 1,
           items: {
             type: 'object',
+            required: ['name', 'price', 'quantity'],
             properties: {
               name: { type: 'string' },
               price: { type: 'number' },

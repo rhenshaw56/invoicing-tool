@@ -1,9 +1,9 @@
 
 exports.up = async function(knex) {
   await knex.schema.createTable('invoices', (table) => {
-    table.increments('id');
+    table.increments('id').primary();
     table.json('customer').notNullable();
-    table.json('product_details').notNullable();
+    table.json('products').notNullable();
     table.timestamps(true, true);
   });
 

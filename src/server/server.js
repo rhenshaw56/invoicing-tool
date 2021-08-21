@@ -7,9 +7,9 @@ import ReactDOMServer from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
 import App from '../client/App';
 import {typeDefs, resolvers} from './gql';
+import CrudService from './dao';
 
 import models from './models';
-
 
 const Html = ({ body, styles, title }) => `
   <!DOCTYPE html>
@@ -33,10 +33,9 @@ export async function createExpressApp() {
     typeDefs,
     resolvers,
     context: { models },
+    dataSources: () =>  new CrudService(),
     formatError: error => {
-
       return error
-
     },
   });
 
