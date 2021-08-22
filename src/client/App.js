@@ -1,7 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import AppBar from '@material-ui/core/AppBar';
+import Dashboard from './components/Dashboard';
+
+// import Loadable from 'react-loadable';
+
+// const AsyncDashboard = Loadable({
+//   loader: () => import("./components/Dashboard"),
+//   loading: () => <div>loading...</div>,
+// });
 
 const Container = styled.div`
+  font-family: 'Roboto', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,26 +19,29 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   font-size: 40px;
-  background: linear-gradient(20deg, rgb(219, 112, 147), #daa357);
+`;
+
+const Nav = styled(AppBar)`
+  height: 80px;
+  background-color: #336399;
+`;
+
+const NavTitle = styled.span`
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  position: relative;
+  left: 30px;
+  top: 25px;
+  letter-spacing: 0.5px;
+
 `;
 
 function App() {
   return (
     <Container>
-      <header className="App-header">
-        <img src="" className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav><NavTitle>Dashboard</NavTitle></Nav>
+      <Dashboard />
     </Container>
   );
 }
