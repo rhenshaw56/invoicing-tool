@@ -3,13 +3,6 @@ import styled from 'styled-components';
 import AppBar from '@material-ui/core/AppBar';
 import Dashboard from './components/Dashboard';
 
-// import Loadable from 'react-loadable';
-
-// const AsyncDashboard = Loadable({
-//   loader: () => import("./components/Dashboard"),
-//   loading: () => <div>loading...</div>,
-// });
-
 const Container = styled.div`
   font-family: 'Roboto', sans-serif;
   display: flex;
@@ -19,6 +12,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   font-size: 40px;
+  margin: -8px;
 `;
 
 const Nav = styled(AppBar)`

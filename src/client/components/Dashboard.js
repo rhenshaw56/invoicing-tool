@@ -28,6 +28,7 @@ const ActiveItemContainer = styled.div`
 const GET_INVOICE_LIST = gql`
 query getInvoiceList {
   invoices {
+    id
     customer {
       email
     }
@@ -42,17 +43,19 @@ query getInvoiceList {
 const Dashboard = () => {
   const { loading, error, data } = useQuery(GET_INVOICE_LIST);
 
-  const hasMounted = useRef(false);
+  // const hasMounted = useRef(false);
+
+  const invoices = data?.invoices || [];
 
 
-  console.log('data', data);
+  console.log('data', invoices);
   const getData = async () => {
     // const data = await client.query(GET_INVOICE_LIST);
     console.log('YOOY');
     // console.log('data', data);
   }
   useEffect(() => {
-    console.log('RRR');
+    console.log('');
 
     getData();
     // const res =
@@ -63,35 +66,12 @@ const Dashboard = () => {
   return (
     <Container>
       <ListContainer>
-        <InvoiceList />
+        <InvoiceList list={invoices} />
       </ListContainer>
       <ActiveItemContainer><p>Hello</p></ActiveItemContainer>
     </Container>
   )
 };
-
-// class Dashboard extends React.Component {
-//   constructor() {
-//     super();
-//     if (typeof window !== 'undefined') { this.fetchData() }
-//   }
-
-//   fetchData() {
-//     console.log('YOYO');
-//   }
-
-//   render() {
-//     console.log('THISS', this);
-//      return (
-//       <Container>
-//         <ListContainer>
-//           <InvoiceList />
-//         </ListContainer>
-//         <ActiveItemContainer><p>Hello</p></ActiveItemContainer>
-//       </Container>
-//      )
-//   }
-// }
 
 
 export default Dashboard;

@@ -38,15 +38,18 @@ const ListItem = styled.div`
 `;
 
 
-const InvoiceList = () => {
+const InvoiceList = ({ list }) => {
   return (
     <Container>
       <Title>INVOICES - 54</Title>
-      <ListItem>
-        <ItemDesc>Football</ItemDesc>
-        <ItemDesc>Items - 03</ItemDesc>
-        <CustomerName>Rowland Henshaw</CustomerName>
-      </ListItem>
+      {list.map(({ id }) => (
+        <ListItem key={id}>
+          <ItemDesc>Football</ItemDesc>
+          <ItemDesc>Items - 03</ItemDesc>
+          <CustomerName>Rowland Henshaw</CustomerName>
+        </ListItem>
+      ))}
+
     </Container>
   )
 };
